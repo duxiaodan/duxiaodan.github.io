@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Results</h1>
+<script>
+var N = 10;
+var im_folders = ['Input1', 'Output/Etching', 'Output/Ink', 'Output/Pencil', 'Output/Mosaic','Output/Oil','Output/Watercolor','Input2/Etching', 'Input2/Ink', 'Input2/Pencil', 'Input2/Mosaic','Input2/Oil','Input2/Watercolor'];
+var im_folder_display_name = ['Content', 'Etching', 'Ink', 'Pencil', 'Mosaic','Oil','Watercolor','Etching Style', 'Ink Style', 'Pencil Style', 'Mosaic Style','Oil Style','Watercolor Style'];
+
+function im_path(folder, i, ext){
+	return './images/'+folder+'/'+i.toString().padStart(3, '0')+'.'+ext;
+}
+
+function write_centered_im(im_path){
+	document.write('<div style="height:512px; width:512px; padding-top:0px; margin: 0 3px 0 3px; background:white;"><img style="display:inline-flex; max-height:512px; max-width:512px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
+} 
+
+function write_column(folder_name, display_name, ext){
+	document.write('<div id="'+folder_name+'" style="float:left">');
+	document.write('<h2>'+display_name+'</h2>')
+	for (var i=0; i < N; i++){
+		write_centered_im(im_path(folder_name, i, ext));
+	}
+	document.write('</div>');
+}
+
+ function showhide_func(div_name) {
+   var x = document.getElementById(div_name);
+   if (x.style.display === "none") {
+     x.style.display = "block";
+   } else {
+     x.style.display = "none";
+   }
+ }
+
+for (var i=0; i < im_folders.length; i++){
+	document.write('<button style="float:left" onclick="showhide_func(\''+im_folders[i]+'\')">'+im_folder_display_name[i]+'</button>');
+}
+
+document.write('<div style="width:1000000px; overflow-x: scroll;  overflow-y: scroll; white-space: nowrap;">');
+for (var i=0; i < 7; i++){
+	write_column(im_folders[i], im_folder_display_name[i], 'jpg');
+}
+for (var i=7; i < im_folders.length; i++){
+	write_column(im_folders[i], im_folder_display_name[i], 'png');
+}
+document.write('</div>');
+
+</script> 
+
+
+
+</body>
+</html>
