@@ -5,8 +5,8 @@
 <h1>Results</h1>
 <script>
 var N = 10;
-var im_folders = ['Input1', 'Output/Etching', 'Output/Ink', 'Output/Pencil', 'Output/Mosaic','Output/Oil','Output/Watercolor','Input2/Etching', 'Input2/Ink', 'Input2/Pencil', 'Input2/Mosaic','Input2/Oil','Input2/Watercolor'];
-var im_folder_display_name = ['Content', 'Etching', 'Ink', 'Pencil', 'Mosaic','Oil','Watercolor','Etching Style', 'Ink Style', 'Pencil Style', 'Mosaic Style','Oil Style','Watercolor Style'];
+var im_folders = ['Input1', 'Output/Etching', 'Output/Ink', 'Output/Pencil', 'Output/Mosaic','Output/Oil','Output/Watercolor','Output_colorize/Etching', 'Output_colorize/Ink', 'Output_colorize/Pencil', 'Output_colorize/Mosaic','Output_colorize/Oil','Output_colorize/Watercolor','Input2/Etching', 'Input2/Ink', 'Input2/Pencil', 'Input2/Mosaic','Input2/Oil','Input2/Watercolor'];
+var im_folder_display_name = ['Content', 'Etching', 'Ink', 'Pencil', 'Mosaic','Oil','Watercolor','Etching colorize', 'Ink colorize', 'Pencil colorize', 'Mosaic colorize','Oil colorize','Watercolor colorize','Etching Style', 'Ink Style', 'Pencil Style', 'Mosaic Style','Oil Style','Watercolor Style'];
 
 function im_path(folder, i, ext){
 	return './images/'+folder+'/'+i.toString().padStart(3, '0')+'.'+ext;
@@ -39,10 +39,10 @@ for (var i=0; i < im_folders.length; i++){
 }
 
 document.write('<div style="width:1000000px; overflow-x: scroll;  overflow-y: scroll; white-space: nowrap;">');
-for (var i=0; i < 7; i++){
+for (var i=0; i < im_folders.length-6; i++){
 	write_column(im_folders[i], im_folder_display_name[i], 'jpg');
 }
-for (var i=7; i < im_folders.length; i++){
+for (var i=im_folders.length-6; i < im_folders.length; i++){
 	write_column(im_folders[i], im_folder_display_name[i], 'png');
 }
 document.write('</div>');
