@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>'An old asian man with short grey hair and a goatee.'</h1>
+<script>
+var N = 10;
+var pi = '4'
+var im_folders = ['v7','v7'];
+var display_name = ['v7 Image', 'v7 0 4std'];
+var iter = [153000]
+
+
+function im_path(folder, i, ext){
+	
+	return './images/'+folder+'/'+i.toString()+'.'+ext;
+}
+
+function write_centered_im(im_path){
+	document.write('<div style="height:1024; width:1024; padding-top:0px; margin: 0px 10px 0px 3px; background:white;"><img style="display:inline-flex; max-height:280px; max-width:280px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
+	// document.write('<img src="'+im_path+'" width=56.5 height=289.4 border=50>');
+
+}
+
+function write_centered_im_top(im_path){
+	document.write('<div style="height:1024; width:1024; padding-top:150px; margin: 0px 10px 0px 3px; background:white;"><img style="display:inline-flex; max-height:280px; max-width:280px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
+	// document.write('<img src="'+im_path+'" width=56.5 height=289.4 border=50>');
+
+} 
+
+function write_column(folder_name, dname, ext, idx){
+	document.write('<div id="'+dname+'" style="float:left">');
+	document.write('<h2>'+dname+'</h2>')
+    switch(dname){
+      case display_name[0]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_TI_'+i.toString()+'_'+pi, ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_TI_'+i.toString()+'_'+pi, ext));
+          }
+        }
+        break;
+      case display_name[1]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_Tstd4_'+i.toString()+'_'+pi, ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_Tstd4_'+i.toString()+'_'+pi, ext));
+          }
+        }
+        break;
+      
+    }
+	document.write('</div>');
+}
+
+ function showhide_func(div_name) {
+   var x = document.getElementById(div_name);
+   if (x.style.display === "none") {
+     x.style.display = "block";
+   } else {
+     x.style.display = "none";
+   }
+ }
+
+for (var i=0; i < im_folders.length; i++){
+  document.write('<button style="float:left" onclick="showhide_func(\''+display_name[i]+'\')">'+display_name[i]+'</button>');
+}
+
+document.write('<div style="width:10000px;height:10000; overflow-x: scroll;  overflow-y: scroll; white-space: nowrap;">');
+for (var i=0; i < display_name.length; i++){
+	write_column(im_folders[i], display_name[i], 'png', i);
+}
+document.write('</div>');
+
+
+</script> 
+
+
+
+</body>
+</html>
