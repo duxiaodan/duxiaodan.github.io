@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Results</h1>
+<script>
+var N = 4;
+var im_folders = ['v7'];
+var display_name = ['CLIP Input','VE Input','Img + Img','Img + 0 + 0std','Img + 0 + 1std (1)','Img + 0 + 1std (2)','Img + 0 + 1std (3)','Img + 0 + 0.5std','Img + 0 + 1.5std','Img + 0 + 2.0std'];
+var A
+var iter = 153000
+var image_sequence = ['AB','BA']
+var A = ['00000','00013','00024','00003']
+var B = ['00028','00017','00025','00015']
+
+function im_path(folder, i, ext){
+	
+	return './images/'+folder+'/'+i.toString()+'.'+ext;
+}
+
+function write_centered_im(im_path){
+	document.write('<div style="height:1024; width:1024; padding-top:0px; margin: 0px 10px 0px 3px; background:white;"><img style="display:inline-flex; max-height:280px; max-width:280px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
+	// document.write('<img src="'+im_path+'" width=56.5 height=289.4 border=50>');
+
+}
+
+function write_centered_im_top(im_path){
+	document.write('<div style="height:1024; width:1024; padding-top:150px; margin: 0px 10px 0px 3px; background:white;"><img style="display:inline-flex; max-height:280px; max-width:280px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
+	// document.write('<img src="'+im_path+'" width=56.5 height=289.4 border=50>');
+
+} 
+
+function write_column(folder_name, dname, ext, idx){
+	document.write('<div id="'+dname+'" style="float:left">');
+	document.write('<h2>'+dname+'</h2>')
+    switch(dname){
+      case display_name[0]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path('./Source', A[i], ext));
+          }else{
+            write_centered_im(im_path('./Source', A[i], ext));
+          }
+                
+          write_centered_im(im_path('./Source', B[i], ext));
+        }
+        break;
+      case display_name[1]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path('./Source', B[i], ext));
+          }else{
+            write_centered_im(im_path('./Source', B[i], ext));
+          }
+                
+          write_centered_im(im_path('./Source', A[i], ext));
+        }
+        break;
+      case display_name[2]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_AB_'+i.toString(), ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_AB_'+i.toString(), ext));
+          }
+                
+          write_centered_im(im_path(folder_name, folder_name+'_BA_'+i.toString(), ext));
+        }
+        break;
+      case display_name[3]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_Amu_'+i.toString(), ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_Amu_'+i.toString(), ext));
+          }
+                
+          write_centered_im(im_path(folder_name, folder_name+'_Bmu_'+i.toString(), ext));
+        }
+        break;
+      case display_name[4]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_Astd1_0_'+i.toString(), ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_Astd1_0_'+i.toString(), ext));
+          }
+                
+          write_centered_im(im_path(folder_name, folder_name+'_Bstd1_0_'+i.toString(), ext));
+        }
+        break;
+      case display_name[5]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_Astd1_1_'+i.toString(), ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_Astd1_1_'+i.toString(), ext));
+          }
+                
+          write_centered_im(im_path(folder_name, folder_name+'_Bstd1_1_'+i.toString(), ext));
+        }
+        break;
+      case display_name[6]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_Astd1_2_'+i.toString(), ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_Astd1_2_'+i.toString(), ext));
+          }
+                
+          write_centered_im(im_path(folder_name, folder_name+'_Bstd1_2_'+i.toString(), ext));
+        }
+        break;
+      case display_name[7]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_Astd0.5_'+i.toString(), ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_Astd0.5_'+i.toString(), ext));
+          }
+                
+          write_centered_im(im_path(folder_name, folder_name+'_Bstd0.5_'+i.toString(), ext));
+        }
+        break;
+      case display_name[8]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_Astd1.5_'+i.toString(), ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_Astd1.5_'+i.toString(), ext));
+          }
+                
+          write_centered_im(im_path(folder_name, folder_name+'_Bstd1.5_'+i.toString(), ext));
+        }
+        break;
+      case display_name[9]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_Astd2.0_'+i.toString(), ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_Astd2.0_'+i.toString(), ext));
+          }
+                
+          write_centered_im(im_path(folder_name, folder_name+'_Bstd2.0_'+i.toString(), ext));
+        }
+        break;
+    }
+	document.write('</div>');
+}
+
+ function showhide_func(div_name) {
+   var x = document.getElementById(div_name);
+   if (x.style.display === "none") {
+     x.style.display = "block";
+   } else {
+     x.style.display = "none";
+   }
+ }
+
+for (var i=0; i < display_name.length; i++){
+	document.write('<button style="float:left" onclick="showhide_func(\''+display_name[i]+'\')">'+display_name[i]+'</button>');
+}
+
+document.write('<div style="width:10000px;height:10000; overflow-x: scroll;  overflow-y: scroll; white-space: nowrap;">');
+for (var i=0; i < display_name.length; i++){
+	write_column(im_folders, display_name[i], 'png', i);
+}
+document.write('</div>');
+
+
+</script> 
+
+
+
+</body>
+</html>

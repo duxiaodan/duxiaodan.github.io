@@ -1,58 +1,13 @@
-<!DOCTYPE html>
 <html>
 <body>
 
-<h1>Results</h1>
+<h2>Two-channel VAE model</h2>
+
 <script>
-var N = 1;
-var im_folders = ['v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11'];
-var im_folder_display_name = ['v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11'];
-var iter = [163500,160500,166500,143500,141500,144500,139500,132000,112500,68500,65500]
-
-function im_path(folder, i, ext){
-	
-	return './images/'+folder+'/'+folder+'_'+i.toString()+'.'+ext;
-}
-
-function write_centered_im(im_path){
-	document.write('<div style="height:2894; width:565; padding-top:500px; margin: 0 10px 0 3px; background:white;"><img style="display:inline-flex; max-height:1000; max-width:200px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
-	// document.write('<img src="'+im_path+'" width=56.5 height=289.4 border=50>');
-
-} 
-
-function write_column(folder_name, display_name, ext, idx){
-	document.write('<div id="'+folder_name+'" style="float:left">');
-	document.write('<h2>'+display_name+'   at iter:'+iter[idx]+'</h2>')
-	for (var i=0; i < N; i++){
-		write_centered_im(im_path(folder_name, iter[idx], ext));
-	}
-	document.write('</div>');
-}
-
- function showhide_func(div_name) {
-   var x = document.getElementById(div_name);
-   if (x.style.display === "none") {
-     x.style.display = "block";
-   } else {
-     x.style.display = "none";
-   }
- }
-
-for (var i=0; i < im_folders.length; i++){
-	document.write('<button style="float:left" onclick="showhide_func(\''+im_folders[i]+'\')">'+im_folder_display_name[i]+'</button>');
-}
-
-document.write('<div style="width:1000000px;height:10000; overflow-x: scroll;  overflow-y: scroll; white-space: nowrap;">');
-for (var i=0; i < im_folders.length; i++){
-	write_column(im_folders[i], im_folder_display_name[i], 'png', i);
-}
-document.write('</div>');
-
-document.write('<div style="height:1200; width:1000; padding-top:500px; margin: 0 10px 0 3px; background:white;"><img style="display:inline-flex; max-height:1000; max-width:1000px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+'./images/Table.png'+'"></div>');
-
-</script> 
-
-
+document.write('<div style="height:400; width:300; padding-top:100px; margin: 0 10px 0 3px; background:white;"><img style="display:inline-flex; max-height:1000; max-width:1000px; position: absolute; top: 50%; left:50%; margin-right: -50%;  transform: translate(-93%, -87%);" src="'+'./images/Table.png'+'"></div>');
+</script>
+<h2>              </h2>
+<a href="v7.html">v7</a>
 
 </body>
 </html>
