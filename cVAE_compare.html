@@ -2,16 +2,16 @@
 <html>
 <body>
 
-<h1>cVAE Results at 43000 iters</h1>
+<h1>cVAE Results</h1>
 <script>
-var N = 1;
-var im_folders = ['cVAE_compare','cVAE_compare','cVAE_compare'];
-var im_folder_display_name = ['v5','v6','v7'];
-var iter = [43000,43000,44000]
+var N = 3;
+var im_folders = ['cVAE_compare','cVAE_compare','cVAE_compare','cVAE_compare','cVAE_compare','cVAE_compare'];
+var im_folder_display_name = ['v5','v6','v7','v8','v9','v10'];
+var iter = [77000,77000,77000,34000,34000,34000]
 
-function im_path(folder, display_name,idx, ext){
+function im_path(folder, display_name,idx,i, ext){
 	
-	return './images/'+folder+'/cVAE_'+display_name+'_'+iter[idx].toString()+'.'+ext;
+	return './images/'+folder+'/cVAE_'+display_name+'_'+i.toString()+'.'+ext;
 }
 
 function write_centered_im(im_path){
@@ -24,7 +24,7 @@ function write_column(folder_name, display_name, ext, idx){
 	document.write('<div id="'+display_name+'" style="float:left">');
 	document.write('<h2>'+display_name+'   at iter:'+iter[idx]+'</h2>')
 	for (var i=0; i < N; i++){
-		write_centered_im(im_path(folder_name, display_name,idx, ext));
+		write_centered_im(im_path(folder_name, display_name,idx, i,ext));
 	}
 	document.write('</div>');
 }
@@ -48,7 +48,7 @@ for (var i=0; i < im_folders.length; i++){
 }
 document.write('</div>');
 
-
+document.write('<div style="height:400; width:300; padding-top:100px; margin: 0 10px 0 3px; background:white;"><img style="display:inline-flex; max-height:1000; max-width:1000px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(0%, 0%);" src="'+'./images/cVAE_Table.png'+'"></div>');
 </script> 
 
 
