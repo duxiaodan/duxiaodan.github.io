@@ -6,9 +6,9 @@
 <script>
 var N = 10;
 var pi = '5'
-var im_folders = ['threelevels_landmarks_reg_avg2','v7','v7','v7'];
-var display_name = ['threelevels KNN','v7 Image', 'v7 0 4std', 'v7 KNN'];
-var iter = [515000,153000,153000, 153000]
+var im_folders = ['threelevels_landmarks_reg_avg2','v7','v7','v7','cVAE_v7','cVAE_v7'];
+var display_name = ['threelevels KNN','v7 Image', 'v7 0 4std', 'v7 KNN','cVAE v7 Image','cVAE v7 0 4std'];
+var iter = [515000,153000,153000, 153000, 104000, 104000]
 
 
 function im_path(folder, i, ext){
@@ -65,6 +65,24 @@ function write_column(folder_name, dname, ext, idx){
             write_centered_im_top(im_path(folder_name, folder_name+'_NN_(50_10)_'+i.toString()+'_'+pi, ext));
           }else{
             write_centered_im(im_path(folder_name, folder_name+'_NN_(50_10)_'+i.toString()+'_'+pi, ext));
+          }
+        }
+        break;
+      case display_name[4]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_TI_'+i.toString()+'_'+pi, ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_TI_'+i.toString()+'_'+pi, ext));
+          }
+        }
+        break;
+      case display_name[5]:
+        for (var i=0; i < N; i++){
+          if (i==0){
+            write_centered_im_top(im_path(folder_name, folder_name+'_Tstd4_'+i.toString()+'_'+pi, ext));
+          }else{
+            write_centered_im(im_path(folder_name, folder_name+'_Tstd4_'+i.toString()+'_'+pi, ext));
           }
         }
         break;
