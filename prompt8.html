@@ -1,110 +1,41 @@
 <!DOCTYPE html>
 <html>
-<body>
+
 
 <h1>'A smiling woman with curly brown hair wearing lipstick.'</h1>
+<head>
+  <script type="text/javascript" 
+      src="prompt.js">
+  </script>
+</head>
+<body>
 <script>
-var N = 10;
-var pi = '7'
-var im_folders = ['threelevels_landmarks_reg_avg2','v7','v7','v7','cVAE_v7','cVAE_v7','cVAE_v7','cVAE_v7'];
-var display_name = ['threelevels KNN','v7 Image', 'v7 0 4std', 'v7 KNN','cVAE v7 Image','cVAE v7 0 4std','cVAE v7 0 1std','cVAE v7 0 2std'];
-var iter = [515000,153000,153000, 153000, 104000, 104000,104000,104000]
-
+var pi = pi[7]
 
 function im_path(folder, i, ext){
 	
 	return './images/'+folder+'/'+i.toString()+'.'+ext;
 }
 
-function write_centered_im(im_path){
-	document.write('<div style="height:1024; width:1024; padding-top:0px; margin: 0px 10px 0px 3px; background:white;"><img style="display:inline-flex; max-height:280px; max-width:280px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
-	// document.write('<img src="'+im_path+'" width=56.5 height=289.4 border=50>');
+function write_centered_im(im_path,i){
+  if (i==0){
+    document.write('<div style="height:1024; width:1024; padding-top:150px; margin: 0px 10px 0px 3px; background:white;"><img style="display:inline-flex; max-height:280px; max-width:280px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
+  }// document.write('<img src="'+im_path+'" width=56.5 height=289.4 border=50>');
+  else{
+	  document.write('<div style="height:1024; width:1024; padding-top:0px; margin: 0px 10px 0px 3px; background:white;"><img style="display:inline-flex; max-height:280px; max-width:280px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
+    
+  }
 
 }
-
-function write_centered_im_top(im_path){
-	document.write('<div style="height:1024; width:1024; padding-top:150px; margin: 0px 10px 0px 3px; background:white;"><img style="display:inline-flex; max-height:280px; max-width:280px; position: relative; top: 50%; left:50%; margin-right: -50%;  transform: translate(-50%, -50%);" src="'+im_path+'"></div>');
-	// document.write('<img src="'+im_path+'" width=56.5 height=289.4 border=50>');
-
-} 
 
 function write_column(folder_name, dname, ext, idx){
 	document.write('<div id="'+dname+'" style="float:left">');
 	document.write('<h2>'+dname+'</h2>')
-    switch(dname){
-      case display_name[0]:
-        for (var i=0; i < N; i++){
-          if (i==0){
-            write_centered_im_top(im_path(folder_name, folder_name+'_NN_(50_10)_'+i.toString()+'_'+pi, ext));
-          }else{
-            write_centered_im(im_path(folder_name, folder_name+'_NN_(50_10)_'+i.toString()+'_'+pi, ext));
-          }
-        }
-        break;
-      case display_name[1]:
-        for (var i=0; i < N; i++){
-          if (i==0){
-            write_centered_im_top(im_path(folder_name, folder_name+'_TI_'+i.toString()+'_'+pi, ext));
-          }else{
-            write_centered_im(im_path(folder_name, folder_name+'_TI_'+i.toString()+'_'+pi, ext));
-          }
-        }
-        break;
-      case display_name[2]:
-        for (var i=0; i < N; i++){
-          if (i==0){
-            write_centered_im_top(im_path(folder_name, folder_name+'_Tstd4_'+i.toString()+'_'+pi, ext));
-          }else{
-            write_centered_im(im_path(folder_name, folder_name+'_Tstd4_'+i.toString()+'_'+pi, ext));
-          }
-        }
-        break;
-      case display_name[3]:
-        for (var i=0; i < N; i++){
-          if (i==0){
-            write_centered_im_top(im_path(folder_name, folder_name+'_NN_(50_10)_'+i.toString()+'_'+pi, ext));
-          }else{
-            write_centered_im(im_path(folder_name, folder_name+'_NN_(50_10)_'+i.toString()+'_'+pi, ext));
-          }
-        }
-        break;
-      case display_name[4]:
-        for (var i=0; i < N; i++){
-          if (i==0){
-            write_centered_im_top(im_path(folder_name, folder_name+'_TI_'+i.toString()+'_'+pi, ext));
-          }else{
-            write_centered_im(im_path(folder_name, folder_name+'_TI_'+i.toString()+'_'+pi, ext));
-          }
-        }
-        break;
-      case display_name[5]:
-        for (var i=0; i < N; i++){
-          if (i==0){
-            write_centered_im_top(im_path(folder_name, folder_name+'_Tstd4_'+i.toString()+'_'+pi, ext));
-          }else{
-            write_centered_im(im_path(folder_name, folder_name+'_Tstd4_'+i.toString()+'_'+pi, ext));
-          }
-        }
-        break;
-      case display_name[6]:
-        for (var i=0; i < N; i++){
-          if (i==0){
-            write_centered_im_top(im_path(folder_name, folder_name+'_Tstd1_'+i.toString()+'_'+pi, ext));
-          }else{
-            write_centered_im(im_path(folder_name, folder_name+'_Tstd1_'+i.toString()+'_'+pi, ext));
-          }
-        }
-        break;
-      case display_name[7]:
-        for (var i=0; i < N; i++){
-          if (i==0){
-            write_centered_im_top(im_path(folder_name, folder_name+'_Tstd2_'+i.toString()+'_'+pi, ext));
-          }else{
-            write_centered_im(im_path(folder_name, folder_name+'_Tstd2_'+i.toString()+'_'+pi, ext));
-          }
-        }
-        break;
+    
+    for (var i=0; i < N; i++){
+      write_centered_im(im_path(folder_name, folder_name+prefix[idx]+i.toString()+'_'+pi, ext),i);
     }
+
 	document.write('</div>');
 }
 
